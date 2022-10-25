@@ -3,7 +3,7 @@
 %% Configuration File for Data Preparation and Initialization
 %Input Requirements: Data in the format Nx4 where,
 %Data(:,1) are Users, Data(:,2) are Items,
-%Data(:,3) are corresponsind User-Item Ratings from the scale (1-5),
+%Data(:,3) are corresponsind User-Item Ratings,
 %Data(:,4) are Timestamps given in Unix seconds 
 
 %Specifying choice of dataset (100K or 1M)
@@ -56,7 +56,9 @@ opts.cgmaxIter = 30;
 opts.cgtol = 1e-12;    
 %Print ALS iterations (1) or not (0) 
 opts.printin = 0;      
-%Choice of CPU (single/double precision) or GPU (gpuArray) computation
+%Choice of Computation: CPU (single/double precision) or GPU (gpuArray).
+%GPU compatibility required on the machine using gpuArray
+%https://www.mathworks.com/help/releases/R2022a/parallel-computing/run-matlab-functions-on-a-gpu.html
 opts.type = "single";
 
 %Rank of CP Decomposition: Testing of varying model ranks can be done by 
@@ -81,7 +83,7 @@ opts.iterM = 10;
 sz = [length(opts.NmReg) opts.iterM length(opts.Rank) length(opts.LReg)];
 idx = prod(sz(2:end));
 
-%Display Laplacian matrices? (1) to show, (0) to not 
+%Display Laplacian matrices? (1) to show, (0) to not show
 opts.dispLap = 0;
 %Save simulation results? (1) to save, (0) to not save
 opts.fsave = 0;
