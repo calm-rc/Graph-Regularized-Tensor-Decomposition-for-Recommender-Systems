@@ -2,7 +2,7 @@
 %% Topic: Graph Regularized Canonical Polyadiac (GRCP) Tensor Decomposition 
 clear; clc; 
 %Adding paths for required files to train the model
-addpath('gspbox'); addpath('core'); addpath(genpath('utils'));
+addpath('core'); addpath(genpath('utils')); addpath('data');
 feature('numCores'); 
 %Initialization of GRCP model
 GRCP_Init;
