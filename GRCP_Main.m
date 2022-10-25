@@ -1,8 +1,10 @@
 %% Master of Science Thesis: Rohan Chandrashekar (St Id: 5238382)
 %% Topic: Graph Regularized Canonical Polyadiac (GRCP) Tensor Decomposition 
 clear; clc; 
-addpath('gspbox'); addpath('core'); addpath('utils');
+%Adding paths for required files to train the model
+addpath('gspbox'); addpath('core'); addpath(genpath('utils'));
 feature('numCores'); 
+%Initialization of GRCP model
 GRCP_Init;
 
 %% Graph Regularized Canonical Polyadiac (GRCP) Tensor Decomposition 
