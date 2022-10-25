@@ -3,6 +3,8 @@ function [L] = Laplacian(varargin)
 %%Function requires the graph object as input. Laplacian type can be optionally mentioned, 
 %%otherwise the default laplacian type is used.
 
+%%L = Laplacian(G) computes the Laplacian of the graph object 'G' built using the GSP toolbox.
+
 ltype = ' ';
     if nargin < 1
         disp('Error! No arguments passed!');
