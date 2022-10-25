@@ -76,9 +76,7 @@ for iter = 1:opts.maxALSIter
 
     %Computing the Training NMSE and Percentage of Fit (POF)
     Xbar = CP_Reconstruct(gA,glambda);
-    %Ratings being discrete (0-5), need to be rounded to the nearest integer.
-    Xbar = round(Xbar);
-
+    
     Train_X = reshape(W(:).*Xbar(:),oG_dims);
     nXbar = norm(Xbar(:));
     nXtrain = norm(Train_X(:));
