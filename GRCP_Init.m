@@ -60,6 +60,8 @@ opts.printin = 0;
 %GPU compatibility required on the machine using gpuArray
 %https://www.mathworks.com/help/releases/R2022a/parallel-computing/run-matlab-functions-on-a-gpu.html
 opts.type = "single";
+%Data shuffle setting for k-cross validation given by 'on' or 'off'
+opts.shuffle = 'off';
 
 %Rank of CP Decomposition: Testing of varying model ranks can be done by 
 %providing the CP ranks as [R1 R2 R3 ... RN].
