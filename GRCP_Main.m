@@ -11,7 +11,7 @@ GRCP_Init;
 for i = 1:length(opts.NmReg)
     opts.NReg = opts.NmReg(i);
     [A((i-1)*idx+1:i*idx),lambda((i-1)*idx+1:i*idx),f((i-1)*idx+1:i*idx),...
-        Train_RMSE((i-1)*idx+1:i*idx), Test_RMSE((i-1)*idx+1:i*idx),R_Time((i-1)*idx+1:i*idx)]...
+        Train_NMSE((i-1)*idx+1:i*idx), Test_NMSE((i-1)*idx+1:i*idx),R_Time((i-1)*idx+1:i*idx)]...
         = ML_ALS(Data,opts);
 end
 
@@ -21,8 +21,8 @@ A = reshape(A,sz);
 f = reshape(f,sz);
 lambda = reshape(lambda,sz);
 R_Time = reshape(R_Time,sz);
-Train_RMSE = reshape(Train_RMSE,sz);
-Test_RMSE = reshape(Test_RMSE,sz);
+Train_NMSE = reshape(Train_NMSE,sz);
+Test_NMSE = reshape(Test_NMSE,sz);
 
 if (opts.fsave == 1)
     save(opts.filename);
