@@ -1,5 +1,5 @@
 function [x] = ConjGrad(alpha,L,C,x0,opts)
-%%Implementation of the linear Conjugate Solver as discussed in Algorithm (2). The function 
+%%Implementation of the Conjugate Solver as discussed in Algorithm (2). The function 
 %%requires the matrices L = I_n x I_n, C = R x R, x0 = I_n x R with alpha as the graph Laplacian 
 %%regularization value.
 
