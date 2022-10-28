@@ -59,7 +59,7 @@ for iter = 1:opts.maxALSIter
         %Tensor nMode Product between Rating tensor and factor matrices
         Anew = Tensor_MulnMode(X,gA,R,n);
 
-        %Linear Conjugate Gradient Solver
+        %Conjugate Gradient Solver
         Anew = ConjGrad(alpha{n},gL{n},Y,Anew,opts);
         Anew = reshape(Anew,[],R);
 
