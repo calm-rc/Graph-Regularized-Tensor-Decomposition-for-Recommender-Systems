@@ -24,7 +24,7 @@ end
 gA = cell(d,1);
 AtA = zeros(R,R,d,opts.type);
 for n = 2:d
-    Q = Tensor_nMode(X,n);
+    Q = Tensor_nMode(T,n);
     if(size(Q,1) < R)
         gA{n} = max(Q(:))*rand(size(Q,1),R,opts.type);
     else
