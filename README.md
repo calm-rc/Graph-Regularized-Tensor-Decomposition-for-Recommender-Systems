@@ -26,4 +26,4 @@ The code files comprising of .m script files, contains the necessary mathematica
 
 # Copyrights
 
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the conditions listed in the 'license.txt' file are met.
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the conditions listed in the 'LICENSE' file are met.
