@@ -8,7 +8,7 @@ The code is written on MATLAB R2021b. The required dependencies have been includ
 
 The data files comprising of .mat files, contain two datasets namely [MovieLens](https://grouplens.org/datasets/movielens/) 100k and 1M. The contents of the data files are User Id, Item Id, Rating Value and Time of Rating (in Unix Seconds since 1/1/1970 UTC). 
 
-The code files comprising of .m script files, contains the necessary mathematical operations (Tensor and Graph theory) and algorithms (ALS and Conjugate Gradient) to evalaute the GRCP model.  
+The code files comprising of .m script files, contains the necessary mathematical operations (Tensor and Graph theory) and algorithms (GRCP Alternating Least Squares and Conjugate Gradient) to evalaute the GRCP model.  
 
 # Code Usage 
 
