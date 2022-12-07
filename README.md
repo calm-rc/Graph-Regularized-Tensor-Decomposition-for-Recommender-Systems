@@ -6,7 +6,7 @@ This repository contains the code for the Master of Science Thesis ["Graph Regul
 
 The code is written on MATLAB R2021b. The required dependencies have been included in the repository as data files (data) and code files (utils and core). 
 
-The data files comprising of .mat files, contain two datasets namely [MovieLens](https://grouplens.org/datasets/movielens/) 100k and 1M. The contents of the data files are User Id, Item Id, Rating Value and Time of Rating (in Unix Seconds since 1/1/1970 UTC). 
+The data files comprising of .mat files, contain two datasets namely [MovieLens](https://grouplens.org/datasets/movielens/) 100k and 1M. The contents of the data files are User Id, Item Id, Rating Value and Time of Rating (in Unix Seconds since 1/1/1970 UTC). The code is compatible for multidimensional tensor analysis and evaluating certain operations on available GPU. Check initialization file on how to modify and provide the input data.
 
 The code files comprising of .m script files, contains the necessary mathematical operations (Tensor and Graph theory) and algorithms (GRCP Alternating Least Squares and Conjugate Gradient) to evalaute the GRCP model for an RS application.  
 
