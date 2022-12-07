@@ -1,37 +1,32 @@
 function [A,lambda,f,Train_NMSE,Test_NMSE,R_Time] = ML_ALS(Data,opts)
 %Importing User-Item-Time-Ratings from base data
-U = Data(:,1);
-I = Data(:,2);
-T = Data(:,3);
-R = Data(:,4);
+
+[neL, ndimD] = size(Data);
 
 %Splitting the data into Training and Validation
-TE = numel(U);
-Train_Split = floor(opts.Tr_Split*TE);
-Nu = max(U);
-Ni = max(I);
-Nt = max(T);
+Train_Split = floor(opts.Tr_Split*neL);
+for i = 1:ndimD
+    U{i} = Data(:,i);
+    N(i) = max(Data(:,i));
+end
 
 %Creating Rating tensor and Observable data tensor for training the model
-Rating_Mat = zeros(Nu,Ni,Nt);   
-W = zeros(Nu,Ni,Nt);
+Rating_Mat = zeros(N(1:end-1));   
+W = zeros(N(1:end-1));
 ndimI = ndims(Rating_Mat);
 oG_dims = size(Rating_Mat);
 
 %Initializing the Training tensor
 for i = 1:Train_Split
-    Rating_Mat(U(i),I(i),T(i)) = R(i);
-    W(U(i),I(i),T(i)) = 1;
+    for j = 1:ndimI
+        idxT{j} = U{j}(i);
+    end
+    Rating_Mat(idxT{:}) = U{end}(i);
+    W(idxT{:}) = 1;
 end
 
 %% Initializing parameters to build the Laplacian for each tensor dimension
-if(strcmp(opts.cT,'YY') && strcmp(opts.dT,'100K'))
-    knn_graph = [30 40 1];
-elseif(strcmp(opts.cT,'YY') && strcmp(opts.dT,'1M'))
-    knn_graph = [30 40 3];
-else
-    knn_graph = [30 40 4];
-end
+knn_graph = floor(sqrt(N(1:end-1)));
 
 %%Initializing parameters to store the Trained RS models
 rank = opts.Rank;
@@ -63,6 +58,7 @@ for t = 1:sz(1)
     else
         figure("Visible","off");
     end
+    %Printing the obtained Laplacian matrices
     tiledlayout(3,3,'TileSpacing','Compact','Padding','Compact');
     for i = 1:ndimI    
         clear G iL;
@@ -89,6 +85,7 @@ for t = 1:sz(1)
             plot(sort(V(:,2)), '.-');
         end
     end
+
     for m = 1:sz(2)
         for y = 1:sz(3)
             r = rank(y);
@@ -110,12 +107,15 @@ disp('Ending Iterations!');
 %% Testing Dataset
 %Creating Rating tensor and Observable data tensor for testing the model
 Test_Mat = zeros(oG_dims);
-Test_W = zeros(Nu,Ni,Nt);
+Test_W = zeros(oG_dims);
 
 %Initializing the Testing tensor
-for i = Train_Split+1:TE
-    Test_Mat(U(i),I(i),T(i)) = R(i);
-    Test_W(U(i),I(i),T(i)) = 1; 
+for i = Train_Split+1:neL
+    for j = 1:ndimI
+        idxT{j} = U{j}(i);
+    end
+    Test_Mat(idxT{:}) = U{end}(i);
+    Test_W(idxT{:}) = 1; 
 end
 
 %Calculating the Testing Error given the Trained model
